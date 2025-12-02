@@ -101,6 +101,9 @@ nav a:hover {
     .box.large img {
         height: 200px;
     }
+    .main-column {
+        order: -1;   /* Move main story to the top */
+    }
 }
 </style>
 </head>
@@ -146,7 +149,7 @@ nav a:hover {
     </div>
 
     <!-- MAIN STORY COLUMN -->
-    <div>
+    <div class="main-column">
         <div class="box large">
             <img src="main.jpg">
             <div class="content">
