@@ -84,6 +84,10 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
     .article-container h1 {
         font-size: 20px;
     }
