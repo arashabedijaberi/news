@@ -12,6 +12,7 @@ nav {
     display: flex;
     gap: 25px;
     align-items: center;
+    flex-wrap: wrap;
 }
 nav a {
     color: white;
@@ -29,8 +30,14 @@ nav a:hover {
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+        "left main right";
     padding: 20px 0 0 0;
 }
+
+.main-column { grid-area: main; }
+.side-left { grid-area: left; display: grid; gap: 20px; }
+.side-right { grid-area: right; display: grid; gap: 20px; }
 
 .box {
     background: white;
@@ -51,11 +58,6 @@ nav a:hover {
 .box a { text-decoration: none; color: black; }
 .box a:hover { color: #0077ff; }
 
-.side-column {
-    display: grid;
-    gap: 20px;
-}
-
 /* --------- BOTTOM BOXES UNDER MAIN STORY --------- */
 .bottom-center {
     width: 100%;
@@ -65,26 +67,48 @@ nav a:hover {
     margin-top: 20px;
 }
 
+/* --------- FOOTER --------- */
+footer {
+    background: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+footer a:hover {
+    color: #00aaff;
+}
+footer .contact-email {
+    display: block;
+    margin-bottom: 10px;
+}
+
 /* --------- RESPONSIVE (MOBILE) --------- */
 @media (max-width: 950px) {
     .container {
         width: 95%;
-        grid-template-columns: 1fr;  /* stack all columns */
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main"
+            "left"
+            "right"; /* main story on top */
     }
-    .side-column {
-        grid-template-columns: 1fr 1fr; /* 2 per row */
+    .side-left, .side-right {
+        grid-template-columns: 1fr 1fr; /* two per row */
     }
     .bottom-center {
         grid-template-columns: 1fr 1fr;
     }
 }
+
 @media (max-width: 600px) {
-    nav {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    .side-column {
-        grid-template-columns: 1fr; /* 1 per row on small phone */
+    .side-left, .side-right {
+        grid-template-columns: 1fr; /* single column */
     }
     .bottom-center {
         grid-template-columns: 1fr;
@@ -92,7 +116,8 @@ nav a:hover {
     .box.large img {
         height: 200px;
     }
-    .main-column {
-        order: -1;   /* Move main story to the top */
+    footer a {
+        display: inline-block;
+        margin: 5px;
     }
 }
